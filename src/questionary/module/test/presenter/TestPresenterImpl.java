@@ -61,7 +61,8 @@ public class TestPresenterImpl implements TestPresenter {
     private void close() {
         int questionsCount = interactor.getQuestionsCount();
         List<Boolean> answers = interactor.getAllAnswers();
-        view.displayAnswers(questionsCount, answers.toString());
+        String answersString = answers == null ? "[]" : answers.toString();
+        view.displayAnswers(questionsCount, answersString);
         view.close();
     }
 
