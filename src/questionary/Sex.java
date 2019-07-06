@@ -1,3 +1,5 @@
+package questionary;
+
 public enum  Sex {
     MAN("C:\\javaEducationProj\\MMPI-383_муж2.txt"),
     WOMAN("C:\\javaEducationProj\\MMPI-383_жен2.txt");

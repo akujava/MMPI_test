@@ -1,10 +1,15 @@
+package questionary;
+
+import questionary.module.main.view.MainViewImpl;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class StartClass {
 
     public static void main(String[] args) {
-        start();
+        MainViewImpl main = new MainViewImpl();
+        main.start();
     }
 
     public static void start() {
