@@ -15,16 +15,7 @@ public class Test {
         System.out.println("если вы " + ColorsForConsole.ANSI_RED + "не согласны " + ColorsForConsole.ANSI_RESET + "с утверждением, введите " + ColorsForConsole.ANSI_RED + "ноль (0)." + ColorsForConsole.ANSI_RESET);
         Thread.sleep(500);
 
-        File file = new File(sex.getPath());
-        List<String> questions = new ArrayList<>(600);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String fileLine;
-            while ((fileLine = reader.readLine()) != null) {
-                questions.add(fileLine);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        List<String> questions = getStrings(sex);
 
         List<Integer> answers = new ArrayList<>(600);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -45,5 +36,19 @@ public class Test {
         }
 
         System.out.println("?: " + questions.size() + " , ответы: " + answers);
+    }
+
+    private List<String> getStrings(Sex sex) {
+        File file = new File(sex.getPath());
+        List<String> questions = new ArrayList<>(600);
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String fileLine;
+            while ((fileLine = reader.readLine()) != null) {
+                questions.add(fileLine);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return questions;
     }
 }
