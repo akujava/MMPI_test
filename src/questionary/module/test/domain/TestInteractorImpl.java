@@ -17,7 +17,7 @@ public class TestInteractorImpl implements TestInteractor {
     @Override
     public void loadQuestions(Sex sex) {
         File file = new File(sex.getPath());
-        questions = new ArrayList<>(600);
+        questions = new ArrayList<>(599);
         answers = new ArrayList<>(600);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String fileLine;
