@@ -31,14 +31,14 @@ public class TestInteractorImpl implements TestInteractor {
 
     @Override
     public String loadNextQuestion() {
-        if (questions == null) throw new IllegalStateException("You must load questions firstly");
+        if (questions == null) throw new IllegalStateException("First you have to load questions");
         if (currentIndex >= questions.size()) return null;
         return questions.get(currentIndex);
     }
 
     @Override
     public void onQuestionAnswered(boolean answer) {
-        if (answers == null) throw new IllegalStateException("You must load questions firstly");
+        if (answers == null) throw new IllegalStateException("First you have to load questions");
         answers.add(answer);
         currentIndex++;
     }
