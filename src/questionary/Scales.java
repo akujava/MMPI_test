@@ -8,21 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Scales {
-    public List<Integer> getScalePoints(String ss) { //надо корректно ввести путь к файлу с номерами ответов для перевода их в кол-во баллов по определенной шкале
-        String filePath = ss;
-        File txtFile = new File(filePath);
-        List<Integer> scalePoints = null;
+    public static List<Integer> sourceToList(String sourcePath) { //надо ввести путь к файлу с номерами ответов для перевода их в кол-во баллов *** ПОЧЕМУ STATIC???***
+        File txtFile = new File(sourcePath);
+        List<Integer> newList = null;
 
         try(BufferedReader txtReader = new BufferedReader(new FileReader(txtFile))) {
             String line;
-            scalePoints = new ArrayList<>(100); //макс кол-во совпадений - 78
+            newList = new ArrayList<>(100); //макс кол-во совпадений - 78
             while ((line = txtReader.readLine()) != null) {
-                scalePoints.add(Integer.parseInt(line));
+                newList.add(Integer.parseInt(line));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return scalePoints;
+        return newList;
     }
 
     public void getPoints() {
