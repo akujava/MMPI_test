@@ -17,4 +17,8 @@ public interface MainView {
     void displaySexChoice();
 
     void printError();
+
+    void printWaiting();
+
+    void displayContinueChoice();
 }

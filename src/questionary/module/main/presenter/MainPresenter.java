@@ -6,5 +6,7 @@ public interface MainPresenter {
 
     void onNameEntered(String name);
 
+    void onContinueResponseEntered(String response);
+
     void onSexEntered(String sex);
 }

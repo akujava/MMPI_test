@@ -39,7 +39,14 @@ public class MainPresenterImpl implements MainPresenter {
             return;
         }
         this.name = name;
-        view.displaySexChoice();
+        view.printWaiting();
+        Boolean isUserExist = interactor.checkUserExistance(name);
+
+        if (isUserExist) {
+            view.displayContinueChoice();
+        } else {
+            view.displaySexChoice();
+        }
     }
 
     @Override
@@ -60,5 +67,29 @@ public class MainPresenterImpl implements MainPresenter {
         }
 
         router.goToTest(sex);
+    }
+
+    @Override
+    public void onContinueResponseEntered(String response) {
+        if (response == null) {
+            view.printError();
+            return;
+        }
+        Boolean shouldContinue;
+        switch (response) {
+            case "1": shouldContinue = true; break;
+            case "0": shouldContinue = false; break;
+            default: shouldContinue = null; break;
+        }
+        if (shouldContinue == null) {
+            view.displayContinueChoice();
+            return;
+        }
+
+        if (shouldContinue) {
+
+        } else {
+            view.displaySexChoice();
+        }
     }
 }

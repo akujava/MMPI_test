@@ -62,4 +62,16 @@ public class MainViewImpl implements MainView {
             return null;
         }
     }
+
+    @Override
+    public void printWaiting() {
+        System.out.println("Подождите...");
+    }
+
+    @Override
+    public void displayContinueChoice() {
+        System.out.println("Введите единицу (1) для загрузки теста или ноль(0), чтобы начать тест заново");
+        String response = readLine();
+        presenter.onContinueResponseEntered(response);
+    }
 }
