@@ -28,6 +28,22 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
+    public void loadTempAnswers() {
+        System.out.println("Считать с жесткого диска полученные ранее ответы?");
+    }
+
+    @Override
+    public void inputUserName() {
+        String userName = null;
+        System.out.println("Введите имя/фамилию/никнейм:");
+        try {
+            userName = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void displaySexChoice() {
         System.out.println("Введите единицу (1), если ваш пол мужской.");
         System.out.println("Введите ноль (0), если ваш пол женский.");

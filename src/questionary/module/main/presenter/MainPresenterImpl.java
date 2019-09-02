@@ -24,6 +24,7 @@ public class MainPresenterImpl implements MainPresenter {
             e.printStackTrace();
         }
 
+        view.inputUserName(); //я добавил
         view.displaySexChoice();
         view.observeInput();
     }
