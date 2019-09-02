@@ -1,6 +1,7 @@
 package questionary.module.main.presenter;
 
 import questionary.Sex;
+import questionary.module.main.domain.MainInteractor;
 import questionary.module.main.router.MainRouter;
 import questionary.module.main.view.MainView;
 
@@ -8,11 +9,14 @@ public class MainPresenterImpl implements MainPresenter {
 
     private MainView view;
     private MainRouter router;
+    private MainInteractor interactor;
+
     private String name;
 
-    public MainPresenterImpl(MainView view, MainRouter router) {
+    public MainPresenterImpl(MainView view, MainRouter router, MainInteractor interactor) {
         this.view = view;
         this.router = router;
+        this.interactor = interactor;
     }
 
     @Override
