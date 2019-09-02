@@ -34,10 +34,10 @@ public class MainViewImpl implements MainView {
 
     @Override
     public void inputUserName() {
-        String userName = null;
         System.out.println("Введите имя/фамилию/никнейм:");
         try {
-            userName = reader.readLine();
+            String userName = reader.readLine();
+            presenter.onNameEntered(userName);
         } catch (IOException e) {
             e.printStackTrace();
         }

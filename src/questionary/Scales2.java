@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Scales2 {
     public void testSourceToList() {
+        String filePath = "C:\\javaEducationProj\\_scales\\";
+
         List<Integer> points0 = Scales.transformSourceToList("C:\\javaEducationProj\\_scales\\0_Points.txt");
         List<Integer> points1 = Scales.transformSourceToList("C:\\javaEducationProj\\_scales\\1_Points.txt");
         List<Integer> points2 = Scales.transformSourceToList("C:\\javaEducationProj\\_scales\\2_Points.txt");

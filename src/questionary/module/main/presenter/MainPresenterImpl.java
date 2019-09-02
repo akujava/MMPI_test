@@ -8,6 +8,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     private MainView view;
     private MainRouter router;
+    private String name;
 
     public MainPresenterImpl(MainView view, MainRouter router) {
         this.view = view;
@@ -25,8 +26,6 @@ public class MainPresenterImpl implements MainPresenter {
         }
 
         view.inputUserName(); //я добавил
-        view.displaySexChoice();
-        view.observeInput();
     }
 
     @Override
@@ -37,5 +36,12 @@ public class MainPresenterImpl implements MainPresenter {
             case "break": view.close(); break;
             default: view.displaySexChoice(); break;
         }
+    }
+
+    @Override
+    public void onNameEntered(String name) {
+        this.name = name;
+        view.displaySexChoice();
+        view.observeInput();
     }
 }

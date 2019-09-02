@@ -47,10 +47,10 @@ public class TestPresenterImpl implements TestPresenter {
                 loadNextQuestion();
                 break;
             case "pause":
-                saveTempAnswers(???);//сохранение ответов в txt файл
+//                saveTempAnswers(???);//сохранение ответов в txt файл
                 break;
             case "load":
-                load**(???);//загрузка ответов из txt файла
+//                load**(???);//загрузка ответов из txt файла
                 break;
             case "exit":
                 close();
@@ -72,21 +72,21 @@ public class TestPresenterImpl implements TestPresenter {
 
     //после команды "pause" сохраняем промежуточный рез-тат в txt файл
     private void saveTempAnswers(List<Boolean> answers) {
-        File tempAnswers = new File("C:\\javaEducationProj\\_temp\\" + MainViewImpl.userName + ".txt"); //создание файла, в имени которого будет храниться ФИО опрашиваемого
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(tempAnswers))) {
-            for (int i = 0; i < answers.size(); i++) {
-                writer.write(answers.get(i).toString()); //ok?
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        File tempAnswers = new File("C:\\javaEducationProj\\_temp\\" + MainViewImpl.userName + ".txt"); //создание файла, в имени которого будет храниться ФИО опрашиваемого
+//        try(BufferedWriter writer = new BufferedWriter(new FileWriter(tempAnswers))) {
+//            for (int i = 0; i < answers.size(); i++) {
+//                writer.write(answers.get(i).toString()); //ok?
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     //загрузка промежуточного результата
     private void loadTempAnswers() {
         System.out.println("Введите имя файла из папки C:\\javaEducationProj\\_temp\\ (например \"valera.txt\")");
         String tempFileName = null; //надо считать имя файла
-        List<String> otvety = Scales.transformSourceToList("C:\\javaEducationProj\\_temp\\" + tempFileName);
+//        List<String> otvety = Scales.transformSourceToList("C:\\javaEducationProj\\_temp\\" + tempFileName);
     }
 
     private void close() {
