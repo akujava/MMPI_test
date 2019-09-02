@@ -13,7 +13,6 @@ public class MainViewImpl implements MainView {
 
     private MainPresenter presenter;
     private BufferedReader reader;
-    private boolean isWorked = true;
 
     public void start() {
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -35,34 +34,29 @@ public class MainViewImpl implements MainView {
     @Override
     public void inputUserName() {
         System.out.println("Введите имя/фамилию/никнейм:");
-        try {
-            String userName = reader.readLine();
-            presenter.onNameEntered(userName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String userName = readLine();
+        presenter.onNameEntered(userName);
     }
 
     @Override
     public void displaySexChoice() {
         System.out.println("Введите единицу (1), если ваш пол мужской.");
         System.out.println("Введите ноль (0), если ваш пол женский.");
+        String sex = readLine();
+        presenter.onSexEntered(sex);
     }
 
     @Override
-    public void observeInput() {
-        while (isWorked) {
-            try {
-                String input = reader.readLine();
-                presenter.onInputEntered(input);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public void printError() {
+        System.out.println("Непредвиденная ошибка");
+    }
+
+    private String readLine() {
+        try {
+            return reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
-    }
-
-    @Override
-    public void close() {
-        isWorked = false;
     }
 }

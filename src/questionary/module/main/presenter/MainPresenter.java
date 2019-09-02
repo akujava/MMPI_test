@@ -4,7 +4,7 @@ public interface MainPresenter {
 
     void onStart();
 
-    void onInputEntered(String input);
-
     void onNameEntered(String name);
+
+    void onSexEntered(String sex);
 }

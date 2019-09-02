@@ -29,19 +29,32 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onInputEntered(String input) {
-        switch (input) {
-            case "1": router.goToTest(Sex.MAN); break;
-            case "0": router.goToTest(Sex.WOMAN); break;
-            case "break": view.close(); break;
-            default: view.displaySexChoice(); break;
+    public void onNameEntered(String name) {
+        if (name == null) {
+            view.printError();
+            return;
         }
+        this.name = name;
+        view.displaySexChoice();
     }
 
     @Override
-    public void onNameEntered(String name) {
-        this.name = name;
-        view.displaySexChoice();
-        view.observeInput();
+    public void onSexEntered(String input) {
+        if (input == null) {
+            view.printError();
+            return;
+        }
+        Sex sex;
+        switch (input) {
+            case "1": sex = Sex.MAN; break;
+            case "0": sex = Sex.WOMAN; break;
+            default: sex = null; break;
+        }
+        if (sex == null) {
+            view.displaySexChoice();
+            return;
+        }
+
+        router.goToTest(sex);
     }
 }

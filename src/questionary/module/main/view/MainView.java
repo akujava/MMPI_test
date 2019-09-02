@@ -16,7 +16,5 @@ public interface MainView {
 
     void displaySexChoice();
 
-    void observeInput();
-
-    void close();
+    void printError();
 }
