@@ -1,5 +1,6 @@
 package questionary.module.main.view;
 
+import questionary.Scales;
 import questionary.module.main.domain.MainInteractor;
 import questionary.module.main.domain.MainInteractorImpl;
 import questionary.module.main.presenter.MainPresenter;
@@ -56,8 +57,10 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
-    public void loadTempAnswers() {
-        System.out.println("Считать с жесткого диска полученные ранее ответы?");
+    public void displayContinueChoice() {
+        System.out.println("Введите единицу (1) для загрузки теста или ноль (0), чтобы начать тест заново");
+        String response = readLine();
+        presenter.onContinueResponseEntered(response);
     }
 
     @Override
@@ -69,9 +72,7 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
-    public void displayContinueChoice() {
-        System.out.println("Введите единицу (1) для загрузки теста или ноль(0), чтобы начать тест заново");
-        String response = readLine();
-        presenter.onContinueResponseEntered(response);
+    public void loadSavedAnswers(String path) {
+        Scales.transformSourceToList(path);
     }
 }

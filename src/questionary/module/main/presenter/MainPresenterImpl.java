@@ -87,7 +87,7 @@ public class MainPresenterImpl implements MainPresenter {
         }
 
         if (shouldContinue) {
-
+            //view.loadSavedAnswers();
         } else {
             view.displaySexChoice();
         }

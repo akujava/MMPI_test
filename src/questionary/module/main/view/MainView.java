@@ -13,12 +13,12 @@ public interface MainView {
 
     void printWaiting();
 
-    /**
-     * считать полученные ответы, если пользователь раньше уже прошел часть тестирования
-     */
-    void loadTempAnswers();
+    void displayContinueChoice();
 
     void displaySexChoice();
 
-    void displayContinueChoice();
+    /**
+     * считать полученные ответы, если пользователь раньше уже прошел часть тестирования
+     */
+    void loadSavedAnswers(String path);
 }
