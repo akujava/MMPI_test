@@ -29,31 +29,6 @@ public class MainViewImpl implements MainView {
         System.out.println("МИННЕСОТСКИЙ МНОГОФАЗНЫЙ ЛИЧНОСТНЫЙ ТЕСТ (ММPI)");
     }
 
-    @Override
-    public void loadTempAnswers() {
-        System.out.println("Считать с жесткого диска полученные ранее ответы?");
-    }
-
-    @Override
-    public void inputUserName() {
-        System.out.println("Введите имя/фамилию/никнейм:");
-        String userName = readLine();
-        presenter.onNameEntered(userName);
-    }
-
-    @Override
-    public void displaySexChoice() {
-        System.out.println("Введите единицу (1), если ваш пол мужской.");
-        System.out.println("Введите ноль (0), если ваш пол женский.");
-        String sex = readLine();
-        presenter.onSexEntered(sex);
-    }
-
-    @Override
-    public void printError() {
-        System.out.println("Непредвиденная ошибка");
-    }
-
     private String readLine() {
         try {
             return reader.readLine();
@@ -64,8 +39,33 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
+    public void inputUserName() {
+        System.out.println("Введите имя/фамилию/никнейм:");
+        String userName = readLine();
+        presenter.onNameEntered(userName);
+    }
+
+    @Override
+    public void printError() {
+        System.out.println("Непредвиденная ошибка");
+    }
+
+    @Override
     public void printWaiting() {
         System.out.println("Подождите...");
+    }
+
+    @Override
+    public void loadTempAnswers() {
+        System.out.println("Считать с жесткого диска полученные ранее ответы?");
+    }
+
+    @Override
+    public void displaySexChoice() {
+        System.out.println("Введите единицу (1), если ваш пол мужской.");
+        System.out.println("Введите ноль (0), если ваш пол женский.");
+        String sex = readLine();
+        presenter.onSexEntered(sex);
     }
 
     @Override
