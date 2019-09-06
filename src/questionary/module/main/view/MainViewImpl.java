@@ -70,9 +70,4 @@ public class MainViewImpl implements MainView {
         String sex = readLine();
         presenter.onSexEntered(sex);
     }
-
-    @Override
-    public void loadSavedAnswers(String path) {
-        Scales.transformSourceToList(path);
-    }
 }

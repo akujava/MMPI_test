@@ -16,9 +16,4 @@ public interface MainView {
     void displayContinueChoice();
 
     void displaySexChoice();
-
-    /**
-     * считать полученные ответы, если пользователь раньше уже прошел часть тестирования
-     */
-    void loadSavedAnswers(String path);
 }
