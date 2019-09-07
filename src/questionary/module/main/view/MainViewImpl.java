@@ -64,6 +64,13 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
+    public void displayLoadingImpossibility() {
+        System.out.println("Произошла ошибка: невозможно загрузить сохраненный тест.");
+        System.out.println("Начните тест заново.");
+        start();
+    }
+
+    @Override
     public void displaySexChoice() {
         System.out.println("Введите единицу (1), если ваш пол мужской.");
         System.out.println("Введите ноль (0), если ваш пол женский.");

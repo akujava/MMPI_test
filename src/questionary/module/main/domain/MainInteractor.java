@@ -11,6 +11,4 @@ public interface MainInteractor {
      */
     User loadTest(String path);
 
-    void saveTest(User user);
-
-}
+    }

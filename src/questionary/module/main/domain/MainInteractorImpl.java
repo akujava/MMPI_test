@@ -25,10 +25,12 @@ public class MainInteractorImpl implements MainInteractor {
 
     @Override
     public User loadTest(String name) {
-
         String path = getPath(name);
         List<String> list = FileHelper.makeList(path);
         // Проверить, что список не пустой
+        if (list.isEmpty()) {
+
+        }
         // Получить пол из первой строки
         // Пользователя создавать в моменте return
 
@@ -43,10 +45,5 @@ public class MainInteractorImpl implements MainInteractor {
         user.setAnswers();
 
         return user;
-    }
-
-    @Override
-    public void saveTest(User user) {
-
     }
 }
