@@ -1,6 +1,6 @@
 package questionary.module.test.domain;
 
-import questionary.Sex;
+import questionary.utils.Sex;
 
 import java.io.BufferedReader;
 import java.io.File;

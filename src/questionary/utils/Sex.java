@@ -1,4 +1,4 @@
-package questionary;
+package questionary.utils;
 
 public enum  Sex {
     MAN("C:\\javaEducationProj\\MMPI-383_муж2.txt"),

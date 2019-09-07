@@ -1,6 +1,6 @@
 package questionary.module.test.presenter;
 
-import questionary.Sex;
+import questionary.utils.Sex;
 
 public interface TestPresenter {
 

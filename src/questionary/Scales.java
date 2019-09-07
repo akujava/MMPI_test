@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Scales {
-    public static List<Integer> transformSourceToList(String sourcePath) { //надо ввести путь к файлу с номерами ответов для перевода их в кол-во баллов *** ПОЧЕМУ STATIC???***
+    public static List<Integer> transformSourceToList(String sourcePath) { //надо ввести путь к файлу с номерами ответов для перевода их в кол-во баллов
         File txtFile = new File(sourcePath);
         List<Integer> newList = new ArrayList<>(100);
 

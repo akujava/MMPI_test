@@ -1,16 +1,10 @@
 package questionary.module.test.presenter;
 
-import questionary.Scales;
-import questionary.Sex;
-import questionary.module.main.view.MainViewImpl;
+import questionary.utils.Sex;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.view.TestView;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 
 public class TestPresenterImpl implements TestPresenter {

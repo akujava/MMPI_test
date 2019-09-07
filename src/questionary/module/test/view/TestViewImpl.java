@@ -1,7 +1,7 @@
 package questionary.module.test.view;
 
-import questionary.ColorsForConsole;
-import questionary.Sex;
+import questionary.utils.ColorsForConsole;
+import questionary.utils.Sex;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.domain.TestInteractorImpl;
 import questionary.module.test.presenter.TestPresenter;
@@ -12,8 +12,6 @@ import questionary.module.test.router.TestRouterImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import static questionary.ColorsForConsole.ANSI_YELLOW_BACKGROUND;
 
 public class TestViewImpl implements TestView {
 

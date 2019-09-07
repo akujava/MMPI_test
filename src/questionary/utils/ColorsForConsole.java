@@ -1,4 +1,4 @@
-package questionary;
+package questionary.utils;
 
 public class ColorsForConsole {
 
