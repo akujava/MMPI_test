@@ -1,42 +1,35 @@
 package questionary.models;
 
-import questionary.utils.Sex;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
     private String name;
     private Sex sex;
-    private List<String> answers;
+    private List<Answer> answers;
 
-    public User(String name, Sex sex, List<String> answers) {
+    public User(String name, Sex sex, List<Answer> answers) {
         this.name = name;
         this.sex = sex;
         this.answers = answers;
+    }
+
+    public User(String name, Sex sex) {
+        this.name = name;
+        this.sex = sex;
+        this.answers = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Sex getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
-    public List<String> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
-    }
-
-    public void setAnswers(List<String> answers) {
-        this.answers = answers;
     }
 }

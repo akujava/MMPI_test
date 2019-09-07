@@ -1,6 +1,6 @@
 package questionary.module.main.router;
 
-import questionary.utils.Sex;
+import questionary.models.Sex;
 import questionary.module.test.view.TestViewImpl;
 
 public class MainRouterImpl implements MainRouter {

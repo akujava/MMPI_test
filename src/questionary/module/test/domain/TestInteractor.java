@@ -1,6 +1,6 @@
 package questionary.module.test.domain;
 
-import questionary.utils.Sex;
+import questionary.models.Sex;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package questionary.module.test.presenter;
 
-import questionary.utils.Sex;
+import questionary.models.Sex;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.view.TestView;

@@ -1,7 +1,7 @@
 package questionary.module.main.presenter;
 
+import questionary.models.Sex;
 import questionary.models.User;
-import questionary.utils.Sex;
 import questionary.module.main.domain.MainInteractor;
 import questionary.module.main.router.MainRouter;
 import questionary.module.main.view.MainView;
@@ -13,8 +13,6 @@ public class MainPresenterImpl implements MainPresenter {
     private MainInteractor interactor;
 
     private String name;
-    private Sex sex;
-    //public User user;
 
     public MainPresenterImpl(MainView view, MainRouter router, MainInteractor interactor) {
         this.view = view;
@@ -58,19 +56,13 @@ public class MainPresenterImpl implements MainPresenter {
             view.printError();
             return;
         }
-        Sex sex;
-        switch (input) {
-            case "1": sex = Sex.MAN; break;
-            case "0": sex = Sex.WOMAN; break;
-            default: sex = null; break;
-        }
+        Sex sex = Sex.fromInput(input);
         if (sex == null) {
             view.displaySexChoice();
             return;
         }
 
-        this.sex = sex;
-        router.goToTest(sex);
+        router.goToTest(new User(name, sex));
     }
 
     @Override

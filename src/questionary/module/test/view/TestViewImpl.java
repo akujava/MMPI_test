@@ -1,7 +1,7 @@
 package questionary.module.test.view;
 
 import questionary.utils.ColorsForConsole;
-import questionary.utils.Sex;
+import questionary.models.Sex;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.domain.TestInteractorImpl;
 import questionary.module.test.presenter.TestPresenter;

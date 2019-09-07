@@ -1,8 +1,9 @@
 package questionary.module.main.router;
 
-import questionary.utils.Sex;
+import questionary.models.Sex;
+import questionary.models.User;
 
 public interface MainRouter {
 
-    void goToTest(Sex sex);
+    void goToTest(User user);
 }

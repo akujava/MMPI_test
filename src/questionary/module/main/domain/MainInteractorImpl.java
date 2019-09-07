@@ -1,21 +1,17 @@
 package questionary.module.main.domain;
 
-import questionary.Scales;
+import questionary.models.Sex;
 import questionary.models.User;
 import questionary.utils.FileHelper;
-import questionary.utils.Sex;
 
-import javax.swing.text.StringContent;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import static questionary.utils.Constants.SAVED_USER_ROOT;
 
 public class MainInteractorImpl implements MainInteractor {
-    private User user;
 
-    public String getPath(String name) {
+    private String getPath(String name) {
         String path = SAVED_USER_ROOT + name + ".txt";
         return path;
     }
@@ -29,8 +25,12 @@ public class MainInteractorImpl implements MainInteractor {
 
     @Override
     public User loadTest(String name) {
+
         String path = getPath(name);
         List<String> list = FileHelper.makeList(path);
+        // Проверить, что список не пустой
+        // Получить пол из первой строки
+        // Пользователя создавать в моменте return
 
         user.setName(name);
 
@@ -39,6 +39,7 @@ public class MainInteractorImpl implements MainInteractor {
         user.getSex();
 
         list.remove(0);
+        List<String> answers = list.subList(1, list.size());
         user.setAnswers();
 
         return user;
