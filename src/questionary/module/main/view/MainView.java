@@ -7,7 +7,7 @@ public interface MainView {
     /**
      * ввод имени, для последующего использования при создании временного файла с ответами
      */
-    void inputUserName();
+    void displayUserNameInput();
 
     void printError();
 

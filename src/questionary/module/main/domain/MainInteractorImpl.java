@@ -31,9 +31,7 @@ public class MainInteractorImpl implements MainInteractor {
         List<String> savedTest = FileHelper.makeList(path);
         // Проверить, что список не пустой
         if (savedTest.isEmpty()) {
-            System.out.println("Произошла ошибка: невозможно загрузить сохраненный тест.");
-            System.out.println("Начните тест заново.");
-            //start();
+            return null;
         }
         // Получить пол и ответы
         String userSex = savedTest.get(0);

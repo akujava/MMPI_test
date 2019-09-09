@@ -9,6 +9,6 @@ public interface MainInteractor {
     /**
      * считать полученные ответы, если пользователь раньше уже прошел часть тестирования
      */
-    User loadTest(String path);
+    User loadTest(String name);
 
-    }
+}

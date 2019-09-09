@@ -40,7 +40,7 @@ public class MainViewImpl implements MainView {
     }
 
     @Override
-    public void inputUserName() {
+    public void displayUserNameInput() {
         System.out.println("Введите имя/фамилию/никнейм:");
         String userName = readLine();
         presenter.onNameEntered(userName);
@@ -67,7 +67,7 @@ public class MainViewImpl implements MainView {
     public void displayLoadingImpossibility() {
         System.out.println("Произошла ошибка: невозможно загрузить сохраненный тест.");
         System.out.println("Начните тест заново.");
-        start();
+        //start();
     }
 
     @Override

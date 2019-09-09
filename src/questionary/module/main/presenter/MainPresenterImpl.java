@@ -30,7 +30,7 @@ public class MainPresenterImpl implements MainPresenter {
             e.printStackTrace();
         }
 
-        view.inputUserName();
+        view.displayUserNameInput();
     }
 
     @Override
@@ -83,7 +83,13 @@ public class MainPresenterImpl implements MainPresenter {
         }
 
         if (shouldContinue) {
-            //view.loadTest();
+            User user = interactor.loadTest(name);
+            if (user == null) {
+                view.displayLoadingImpossibility();
+                view.displayUserNameInput();
+            } else {
+                router.goToTest(user);
+            }
         } else {
             view.displaySexChoice();
         }
