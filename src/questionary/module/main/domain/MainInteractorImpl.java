@@ -1,10 +1,12 @@
 package questionary.module.main.domain;
 
+import questionary.models.Answer;
 import questionary.models.Sex;
 import questionary.models.User;
 import questionary.utils.FileHelper;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import static questionary.utils.Constants.SAVED_USER_ROOT;
@@ -26,24 +28,26 @@ public class MainInteractorImpl implements MainInteractor {
     @Override
     public User loadTest(String name) {
         String path = getPath(name);
-        List<String> list = FileHelper.makeList(path);
+        List<String> savedTest = FileHelper.makeList(path);
         // Проверить, что список не пустой
-        if (list.isEmpty()) {
-
+        if (savedTest.isEmpty()) {
+            System.out.println("Произошла ошибка: невозможно загрузить сохраненный тест.");
+            System.out.println("Начните тест заново.");
+            //start();
         }
-        // Получить пол из первой строки
+        // Получить пол и ответы
+        String userSex = savedTest.get(0);
+        Sex sex = Sex.fromInput(userSex);
+
+        List<String> answers = savedTest.subList(1, savedTest.size());
+        List<Answer> userAnswers = new ArrayList<>(answers.size());
+        for (int i = 0; i < answers.size(); i++) {
+            String input = answers.get(i);
+            Answer answer = Answer.fromInput(input);
+            userAnswers.add(answer);
+        }
+
         // Пользователя создавать в моменте return
-
-        user.setName(name);
-
-        String userSex = list.get(0);
-
-        user.getSex();
-
-        list.remove(0);
-        List<String> answers = list.subList(1, list.size());
-        user.setAnswers();
-
-        return user;
+        return new User(name, sex, userAnswers);
     }
 }

@@ -10,4 +10,12 @@ public class Answer {
     public boolean isValue() {
         return value;
     }
+
+    public static Answer fromInput(String input) {
+        switch (input) {
+            case "1": return new Answer(true);
+            case "0": return new Answer(false);
+            default: return null;
+        }
+    }
 }
