@@ -4,11 +4,11 @@ import questionary.models.User;
 
 public interface MainInteractor {
 
-    Boolean checkUserExistance(String name);
+    Boolean checkUserExistence(String name);
 
     /**
      * считать полученные ответы, если пользователь раньше уже прошел часть тестирования
      */
-    User loadTest(String name);
+    User loadUser(String name);
 
 }

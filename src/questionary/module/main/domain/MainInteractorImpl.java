@@ -13,22 +13,27 @@ import static questionary.utils.Constants.SAVED_USER_ROOT;
 
 public class MainInteractorImpl implements MainInteractor {
 
+    private FileHelper fileHelper;
+
+    public MainInteractorImpl(FileHelper fileHelper) {
+        this.fileHelper = fileHelper;
+    }
+
     private String getPath(String name) {
-        String path = SAVED_USER_ROOT + name + ".txt";
-        return path;
+        return SAVED_USER_ROOT + name + ".txt";
     }
 
     @Override
-    public Boolean checkUserExistance(String name) {
+    public Boolean checkUserExistence(String name) {
         String path = getPath(name);
         File savedTest = new File(path);
         return savedTest.isFile();
     }
 
     @Override
-    public User loadTest(String name) {
+    public User loadUser(String name) {
         String path = getPath(name);
-        List<String> savedTest = FileHelper.makeList(path);
+        List<String> savedTest = fileHelper.makeList(path);
         // Проверить, что список не пустой
         if (savedTest.isEmpty()) {
             return null;
@@ -36,12 +41,17 @@ public class MainInteractorImpl implements MainInteractor {
         // Получить пол и ответы
         String userSex = savedTest.get(0);
         Sex sex = Sex.fromInput(userSex);
+        if (sex == null) {
+            return null;
+        }
 
         List<String> answers = savedTest.subList(1, savedTest.size());
         List<Answer> userAnswers = new ArrayList<>(answers.size());
-        for (int i = 0; i < answers.size(); i++) {
-            String input = answers.get(i);
+        for (String input : answers) {
             Answer answer = Answer.fromInput(input);
+            if (answer == null) {
+                return null;
+            }
             userAnswers.add(answer);
         }
 

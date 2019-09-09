@@ -1,6 +1,5 @@
 package questionary.module.main.view;
 
-import questionary.Scales;
 import questionary.module.main.domain.MainInteractor;
 import questionary.module.main.domain.MainInteractorImpl;
 import questionary.module.main.presenter.MainPresenter;
@@ -20,7 +19,7 @@ public class MainViewImpl implements MainView {
     public void start() {
         reader = new BufferedReader(new InputStreamReader(System.in));
         MainRouter router = new MainRouterImpl();
-        MainInteractor interactor = new MainInteractorImpl();
+        MainInteractor interactor = new MainInteractorImpl(fileHelper);
         presenter = new MainPresenterImpl(this, router, interactor);
         presenter.onStart();
     }

@@ -41,7 +41,7 @@ public class MainPresenterImpl implements MainPresenter {
         }
         this.name = name;
         view.printWaiting();
-        Boolean isUserExist = interactor.checkUserExistance(name);
+        Boolean isUserExist = interactor.checkUserExistence(name);
 
         if (isUserExist) {
             view.displayContinueChoice();
@@ -73,25 +73,32 @@ public class MainPresenterImpl implements MainPresenter {
         }
         Boolean shouldContinue;
         switch (response) {
-            case "1": shouldContinue = true; break;
-            case "0": shouldContinue = false; break;
-            default: shouldContinue = null; break;
+            case "1":
+                shouldContinue = true;
+                break;
+            case "0":
+                shouldContinue = false;
+                break;
+            default:
+                shouldContinue = null;
+                break;
         }
         if (shouldContinue == null) {
             view.displayContinueChoice();
             return;
         }
 
-        if (shouldContinue) {
-            User user = interactor.loadTest(name);
-            if (user == null) {
-                view.displayLoadingImpossibility();
-                view.displayUserNameInput();
-            } else {
-                router.goToTest(user);
-            }
-        } else {
+        if (!shouldContinue) {
             view.displaySexChoice();
+            return;
+        }
+
+        User user = interactor.loadUser(name);
+        if (user == null) {
+            view.displayLoadingImpossibility();
+            view.displayUserNameInput();
+        } else {
+            router.goToTest(user);
         }
     }
 }
