@@ -5,8 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileHelper {
+    // make lazy singleton
+    private static FileHelper instance;
 
-    // Объединить два этих метода
+    private FileHelper() {}
+
+    public static FileHelper getInstance() {
+        if (instance == null) {
+            instance = new FileHelper();
+        }
+
+        return instance;
+    }
+
     public List<String> makeList(String sourcePath) {
         List<String> newList = new ArrayList<>();
 
