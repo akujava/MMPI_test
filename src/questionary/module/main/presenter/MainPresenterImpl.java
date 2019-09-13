@@ -51,21 +51,6 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
-    public void onSexEntered(String input) {
-        if (input == null) {
-            view.printError();
-            return;
-        }
-        Sex sex = Sex.fromInput(input);
-        if (sex == null) {
-            view.displaySexChoice();
-            return;
-        }
-
-        router.goToTest(new User(name, sex));
-    }
-
-    @Override
     public void onContinueResponseEntered(String response) {
         if (response == null) {
             view.printError();
@@ -85,7 +70,7 @@ public class MainPresenterImpl implements MainPresenter {
         }
         if (shouldContinue == null) {
             view.displayContinueChoice();
-            return;
+            return; //это что?
         }
 
         if (!shouldContinue) {
@@ -100,5 +85,20 @@ public class MainPresenterImpl implements MainPresenter {
         } else {
             router.goToTest(user);
         }
+    }
+
+    @Override
+    public void onSexEntered(String input) {
+        if (input == null) {
+            view.printError();
+            return;
+        }
+        Sex sex = Sex.fromInput(input);
+        if (sex == null) {
+            view.displaySexChoice();
+            return; //это что2 ?
+        }
+
+        router.goToTest(new User(name, sex));
     }
 }

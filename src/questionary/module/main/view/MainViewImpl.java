@@ -6,6 +6,7 @@ import questionary.module.main.presenter.MainPresenter;
 import questionary.module.main.presenter.MainPresenterImpl;
 import questionary.module.main.router.MainRouter;
 import questionary.module.main.router.MainRouterImpl;
+import questionary.utils.FileHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class MainViewImpl implements MainView {
     public void start() {
         reader = new BufferedReader(new InputStreamReader(System.in));
         MainRouter router = new MainRouterImpl();
-        MainInteractor interactor = new MainInteractorImpl(fileHelper);
+        MainInteractor interactor = new MainInteractorImpl(FileHelper.getInstance());
         presenter = new MainPresenterImpl(this, router, interactor);
         presenter.onStart();
     }
@@ -66,7 +67,6 @@ public class MainViewImpl implements MainView {
     public void displayLoadingImpossibility() {
         System.out.println("Произошла ошибка: невозможно загрузить сохраненный тест.");
         System.out.println("Начните тест заново.");
-        //start();
     }
 
     @Override
