@@ -1,6 +1,8 @@
 package questionary.utils;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class FileHelper {
     public List<String> makeList(String sourcePath) {
         List<String> newList = new ArrayList<>();
 
-        try (BufferedReader txtReader = new BufferedReader(new FileReader(new File(sourcePath)))) {
+        try (BufferedReader txtReader = new BufferedReader(new FileReader(new File(sourcePath), StandardCharsets.UTF_8))) {
             String line;
             while ((line = txtReader.readLine()) != null) {
                 newList.add(line);

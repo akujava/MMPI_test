@@ -21,6 +21,12 @@ public class User {
         this.answers = new ArrayList<>();
     }
 
+//    public boolean isNewUser() {
+//
+//    }
+//
+//    public int getLastAnswerIndex()
+
     public String getName() {
         return name;
     }

@@ -35,7 +35,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onNameEntered(String name) {
-        if (name == null) {
+        if ("".equals(name)) {
             view.printError();
             return;
         }
