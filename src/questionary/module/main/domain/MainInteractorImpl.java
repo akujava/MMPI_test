@@ -37,14 +37,14 @@ public class MainInteractorImpl implements MainInteractor {
         System.out.println(savedTest);
         // Проверить, что список не пустой
         if (savedTest.isEmpty()) {
-            System.out.println("savedTest.isEmpty");
+            //System.out.println("savedTest.isEmpty");
             return null;
         }
         // Получить пол и ответы
         String userSex = savedTest.get(0);
         Sex sex = Sex.fromInput(userSex);
         if (sex == null) {
-            System.out.println("sex == null");
+            //System.out.println("sex == null");
             return null;
         }
 
@@ -53,7 +53,7 @@ public class MainInteractorImpl implements MainInteractor {
         for (String input : answers) {
             Answer answer = Answer.fromInput(input);
             if (answer == null) {
-                System.out.println("answer == null");
+                //System.out.println("answer == null");
                 return null;
             }
             userAnswers.add(answer);

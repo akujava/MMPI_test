@@ -52,7 +52,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onContinueResponseEntered(String response) {
-        if (response == null) {
+        if ("".equals(response)) {
             view.printError();
             return;
         }
@@ -89,7 +89,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onSexEntered(String input) {
-        if (input == null) {
+        if ("".equals(input)) {
             view.printError();
             return;
         }
