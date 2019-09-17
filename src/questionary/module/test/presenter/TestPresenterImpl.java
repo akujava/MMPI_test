@@ -1,6 +1,8 @@
 package questionary.module.test.presenter;
 
+import questionary.models.Answer;
 import questionary.models.Sex;
+import questionary.models.User;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.view.TestView;
@@ -20,8 +22,8 @@ public class TestPresenterImpl implements TestPresenter {
     }
 
     @Override
-    public void onStart(Sex sex) {
-        interactor.loadQuestions(sex);
+    public void onStart(User user) {
+        interactor.loadQuestions(user);
         int questionsCount = interactor.getQuestionsCount();
         view.displayTestDescription(questionsCount);
         delay(500);
@@ -36,15 +38,11 @@ public class TestPresenterImpl implements TestPresenter {
         switch (input) {
             case "0":
             case "1":
-                boolean answer = input.equals("1");
-                interactor.onQuestionAnswered(answer);
+                interactor.onQuestionAnswered(Answer.fromInput(input));
                 loadNextQuestion();
                 break;
             case "pause":
-//                saveTempAnswers(???);//сохранение ответов в txt файл
-                break;
-            case "load":
-//                load**(???);//загрузка ответов из txt файла
+//                interactor.saveTempAnswers(???);//сохранение ответов в txt файл
                 break;
             case "exit":
                 close();
@@ -64,28 +62,9 @@ public class TestPresenterImpl implements TestPresenter {
         }
     }
 
-    //после команды "pause" сохраняем промежуточный рез-тат в txt файл
-    private void saveTempAnswers(List<Boolean> answers) {
-//        File tempAnswers = new File("C:\\javaEducationProj\\_temp\\" + MainViewImpl.userName + ".txt"); //создание файла, в имени которого будет храниться ФИО опрашиваемого
-//        try(BufferedWriter writer = new BufferedWriter(new FileWriter(tempAnswers))) {
-//            for (int i = 0; i < answers.size(); i++) {
-//                writer.write(answers.get(i).toString()); //ok?
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    //загрузка промежуточного результата
-    private void loadTempAnswers() {
-        System.out.println("Введите имя файла из папки C:\\javaEducationProj\\_temp\\ (например \"valera.txt\")");
-        String tempFileName = null; //надо считать имя файла
-//        List<String> otvety = Scales.transformSourceToList("C:\\javaEducationProj\\_temp\\" + tempFileName);
-    }
-
     private void close() {
         int questionsCount = interactor.getQuestionsCount();
-        List<Boolean> answers = interactor.getAllAnswers();
+        List<Answer> answers = interactor.getAllAnswers();
         String answersString = answers == null ? "[]" : answers.toString();
         view.displayAnswers(questionsCount, answersString);
         view.close();

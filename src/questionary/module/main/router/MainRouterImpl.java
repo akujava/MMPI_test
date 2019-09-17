@@ -8,6 +8,6 @@ public class MainRouterImpl implements MainRouter {
     @Override
     public void goToTest(User user) {
         TestViewImpl test = new TestViewImpl();
-        test.start(user.getSex());
+        test.start(user);
     }
 }

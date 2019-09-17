@@ -1,10 +1,10 @@
 package questionary.module.test.presenter;
 
-import questionary.models.Sex;
+import questionary.models.User;
 
 public interface TestPresenter {
 
-    void onStart(Sex sex);
+    void onStart(User user);
 
     void onInputEntered(String input);
 }

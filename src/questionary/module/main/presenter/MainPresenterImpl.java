@@ -70,7 +70,7 @@ public class MainPresenterImpl implements MainPresenter {
         }
         if (shouldContinue == null) {
             view.displayContinueChoice();
-            return; //это что?
+            return;
         }
 
         if (!shouldContinue) {
@@ -96,7 +96,7 @@ public class MainPresenterImpl implements MainPresenter {
         Sex sex = Sex.fromInput(input);
         if (sex == null) {
             view.displaySexChoice();
-            return; //это что2 ?
+            return;
         }
 
         router.goToTest(new User(name, sex));
