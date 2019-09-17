@@ -25,7 +25,7 @@ public class TestViewImpl implements TestView {
         TestInteractor interactor = new TestInteractorImpl();
         TestRouter router = new TestRouterImpl();
         presenter = new TestPresenterImpl(this, router, interactor);
-        presenter.onStart(user.getSex());
+        presenter.onStart(user);
     }
 
     @Override

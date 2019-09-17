@@ -21,11 +21,13 @@ public class User {
         this.answers = new ArrayList<>();
     }
 
-//    public boolean isNewUser() {
-//
-//    }
-//
-//    public int getLastAnswerIndex()
+    public boolean isNewUser() {
+        return this.getAnswers().isEmpty();
+    }
+
+    public int getLastAnswerIndex() { //может сделать getNextAnswetIndex, чтобы не вычитать и не прибавлять потом единицу?
+        return this.getAnswers().size() - 1;
+    }
 
     public String getName() {
         return name;

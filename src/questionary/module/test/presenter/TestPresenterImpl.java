@@ -42,7 +42,7 @@ public class TestPresenterImpl implements TestPresenter {
                 loadNextQuestion();
                 break;
             case "pause":
-//                interactor.saveTempAnswers(???);//сохранение ответов в txt файл
+                interactor.saveTempAnswers();
                 break;
             case "exit":
                 close();
@@ -64,7 +64,7 @@ public class TestPresenterImpl implements TestPresenter {
 
     private void close() {
         int questionsCount = interactor.getQuestionsCount();
-        List<Answer> answers = interactor.getAllAnswers();
+        List<Answer> answers = interactor.getAllAnswers(); // зачем это???
         String answersString = answers == null ? "[]" : answers.toString();
         view.displayAnswers(questionsCount, answersString);
         view.close();

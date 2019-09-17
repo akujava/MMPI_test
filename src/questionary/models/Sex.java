@@ -1,8 +1,8 @@
 package questionary.models;
 
 public enum  Sex {
-    MAN("C:\\javaEducationProj\\MMPI-383_муж2.txt"),
-    WOMAN("C:\\javaEducationProj\\MMPI-383_жен2.txt");
+    MAN("C:\\javaEducationProj\\MMPI-383_муж.txt"),
+    WOMAN("C:\\javaEducationProj\\MMPI-383_жен.txt");
 
     private String path;
 

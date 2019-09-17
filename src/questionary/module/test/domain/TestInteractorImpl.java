@@ -21,6 +21,11 @@ public class TestInteractorImpl implements TestInteractor {
         File file = new File(user.getSex().getPath());
         questions = new ArrayList<>(600);
         answers = new ArrayList<>(600);
+        if (!user.isNewUser()) {
+            currentIndex = user.getLastAnswerIndex() + 1;
+            answers = user.getAnswers();
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String fileLine;
             while ((fileLine = reader.readLine()) != null) {
@@ -58,25 +63,33 @@ public class TestInteractorImpl implements TestInteractor {
 
     @Override
     public void saveTempAnswers(User user) {
-        String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path)); //нужно ли вынести writer в private переменные?
-        String userSex;
-        switch (user.getSex()) {
-            case MAN: userSex = "1"; break;
-            case WOMAN: userSex = "0"; break;
-            default: userSex = null; break;
-        }
-        writer.write(userSex);
+        try {
+            String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path)); //нужно ли вынести writer в private переменные?
+            String userSex;
+            switch (user.getSex()) {
+                case MAN: userSex = "1"; break;
+                case WOMAN: userSex = "0"; break;
+                default: userSex = null; break;
+            }
 
-        for (int i = 0; i < answers.size(); i++) {
-            String stringAnswer;
-            if (answers.get(i).isValue()) {
-                stringAnswer = "1";
-            } else {
-                stringAnswer = "0";}
-            writer.write(stringAnswer);
-        }
+            if (userSex == null)
+                return;
 
-        writer.close();
+            writer.write(userSex);
+
+            for (int i = 0; i < answers.size(); i++) {
+                String stringAnswer;
+                if (answers.get(i).isValue()) {
+                    stringAnswer = "1";
+                } else {
+                    stringAnswer = "0";}
+                writer.write(stringAnswer);
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
