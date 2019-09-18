@@ -14,6 +14,7 @@ public class TestPresenterImpl implements TestPresenter {
     private TestView view;
     private TestRouter router;
     private TestInteractor interactor;
+    private User user2; //????????????????????????????????????????????????????????????????
 
     public TestPresenterImpl(TestView view, TestRouter router, TestInteractor interactor) {
         this.view = view;
@@ -23,6 +24,7 @@ public class TestPresenterImpl implements TestPresenter {
 
     @Override
     public void onStart(User user) {
+        user2 = user;
         interactor.loadQuestions(user);
         int questionsCount = interactor.getQuestionsCount();
         view.displayTestDescription(questionsCount);
@@ -42,7 +44,8 @@ public class TestPresenterImpl implements TestPresenter {
                 loadNextQuestion();
                 break;
             case "pause":
-                interactor.saveTempAnswers();
+                interactor.saveTempAnswers(user2);
+                view.close(); //оки?
                 break;
             case "exit":
                 close();

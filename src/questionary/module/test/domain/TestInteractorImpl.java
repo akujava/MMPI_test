@@ -68,9 +68,15 @@ public class TestInteractorImpl implements TestInteractor {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path)); //нужно ли вынести writer в private переменные?
             String userSex;
             switch (user.getSex()) {
-                case MAN: userSex = "1"; break;
-                case WOMAN: userSex = "0"; break;
-                default: userSex = null; break;
+                case MAN:
+                    userSex = "1";
+                    break;
+                case WOMAN:
+                    userSex = "0";
+                    break;
+                default:
+                    userSex = null;
+                    break;
             }
 
             if (userSex == null)
@@ -78,12 +84,14 @@ public class TestInteractorImpl implements TestInteractor {
 
             writer.write(userSex);
 
-            for (int i = 0; i < answers.size(); i++) {
+            for (Answer answer : answers) {
                 String stringAnswer;
-                if (answers.get(i).isValue()) {
+                if (answer.isValue()) {
                     stringAnswer = "1";
                 } else {
-                    stringAnswer = "0";}
+                    stringAnswer = "0";
+                }
+                writer.write("\n");
                 writer.write(stringAnswer);
             }
 

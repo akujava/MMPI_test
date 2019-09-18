@@ -58,7 +58,8 @@ public class MainViewImpl implements MainView {
 
     @Override
     public void displayContinueChoice() {
-        System.out.println("Введите единицу (1) для загрузки теста или ноль (0), чтобы начать тест заново");
+        System.out.println("Введите единицу (1) для загрузки теста или ноль (0), чтобы начать тест заново.");
+        System.out.println("При вводе нуля (0) будет утерян ранее сохраненный профиль.");
         String response = readLine();
         presenter.onContinueResponseEntered(response);
     }
