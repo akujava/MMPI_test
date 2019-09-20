@@ -14,11 +14,22 @@ public enum  Sex {
         return path;
     }
 
+
+
     public static Sex fromInput(String input) {
         switch (input) {
             case "1": return Sex.MAN;
             case "0": return Sex.WOMAN;
             default: return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (this == Sex.MAN) {
+            return "1";
+        } else {
+            return "0";
         }
     }
 }

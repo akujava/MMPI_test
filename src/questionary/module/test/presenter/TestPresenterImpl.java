@@ -1,7 +1,6 @@
 package questionary.module.test.presenter;
 
 import questionary.models.Answer;
-import questionary.models.Sex;
 import questionary.models.User;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
@@ -14,7 +13,7 @@ public class TestPresenterImpl implements TestPresenter {
     private TestView view;
     private TestRouter router;
     private TestInteractor interactor;
-    private User user2; //????????????????????????????????????????????????????????????????
+    private User user;
 
     public TestPresenterImpl(TestView view, TestRouter router, TestInteractor interactor) {
         this.view = view;
@@ -24,7 +23,7 @@ public class TestPresenterImpl implements TestPresenter {
 
     @Override
     public void onStart(User user) {
-        user2 = user;
+        this.user = user;
         interactor.loadQuestions(user);
         int questionsCount = interactor.getQuestionsCount();
         view.displayTestDescription(questionsCount);
@@ -44,8 +43,8 @@ public class TestPresenterImpl implements TestPresenter {
                 loadNextQuestion();
                 break;
             case "pause":
-                interactor.saveTempAnswers(user2);
-                view.close(); //оки?
+                interactor.saveTempAnswers(user);
+                view.close();
                 break;
             case "exit":
                 close();
@@ -67,7 +66,7 @@ public class TestPresenterImpl implements TestPresenter {
 
     private void close() {
         int questionsCount = interactor.getQuestionsCount();
-        List<Answer> answers = interactor.getAllAnswers(); // зачем это???
+        List<Answer> answers = interactor.getAllAnswers();
         String answersString = answers == null ? "[]" : answers.toString();
         view.displayAnswers(questionsCount, answersString);
         view.close();

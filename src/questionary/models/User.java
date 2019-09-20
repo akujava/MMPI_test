@@ -25,8 +25,8 @@ public class User {
         return this.getAnswers().isEmpty();
     }
 
-    public int getLastAnswerIndex() { //может сделать getNextAnswetIndex, чтобы не вычитать и не прибавлять потом единицу?
-        return this.getAnswers().size() - 1;
+    public int getNextAnswerIndex() {
+        return this.getAnswers().size();
     }
 
     public String getName() {
@@ -41,3 +41,5 @@ public class User {
         return answers;
     }
 }
+
+//addAnswer

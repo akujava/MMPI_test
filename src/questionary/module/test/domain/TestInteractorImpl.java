@@ -4,7 +4,6 @@ import questionary.models.Answer;
 import questionary.models.Sex;
 import questionary.models.User;
 import questionary.utils.Constants;
-import questionary.utils.FileHelper;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,20 +11,17 @@ import java.util.List;
 
 public class TestInteractorImpl implements TestInteractor {
 
-    private List<String> questions;
-    private List<Answer> answers;
-    private int currentIndex = 0;
-
     @Override
     public void loadQuestions(User user) {
         File file = new File(user.getSex().getPath());
         questions = new ArrayList<>(600);
         answers = new ArrayList<>(600);
         if (!user.isNewUser()) {
-            currentIndex = user.getLastAnswerIndex() + 1;
+            currentIndex = user.getNextAnswerIndex();
             answers = user.getAnswers();
         }
 
+        // todo use FileHelper
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String fileLine;
             while ((fileLine = reader.readLine()) != null) {
@@ -37,13 +33,14 @@ public class TestInteractorImpl implements TestInteractor {
     }
 
     @Override
-    public String loadNextQuestion() {
+    public String loadNextQuestion(int index) {
         if (questions == null) throw new IllegalStateException("Сначала загрузите вопросы");
-        if (currentIndex >= questions.size()) return null;
-        return questions.get(currentIndex);
+        if (index >= questions.size()) return null;
+        return questions.get(index);
     }
 
     @Override
+    @Deprecated
     public void onQuestionAnswered(Answer answer) {
         if (answers == null) throw new IllegalStateException("Сначала загрузите вопросы");
         answers.add(answer);
@@ -51,6 +48,7 @@ public class TestInteractorImpl implements TestInteractor {
     }
 
     @Override
+    @Deprecated
     public List<Answer> getAllAnswers() {
         return answers;
     }
@@ -65,36 +63,17 @@ public class TestInteractorImpl implements TestInteractor {
     public void saveTempAnswers(User user) {
         try {
             String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path)); //нужно ли вынести writer в private переменные?
-            String userSex;
-            switch (user.getSex()) {
-                case MAN:
-                    userSex = "1";
-                    break;
-                case WOMAN:
-                    userSex = "0";
-                    break;
-                default:
-                    userSex = null;
-                    break;
-            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path)); // todo try with resources, перенести в fileHelper
 
-            if (userSex == null)
-                return;
-
+            String userSex = user.getSex() == Sex.MAN ? "man" : "woman";
             writer.write(userSex);
 
             for (Answer answer : answers) {
-                String stringAnswer;
-                if (answer.isValue()) {
-                    stringAnswer = "1";
-                } else {
-                    stringAnswer = "0";
-                }
                 writer.write("\n");
-                writer.write(stringAnswer);
+                writer.write(answer.toString());
             }
 
+            writer.flush();
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
