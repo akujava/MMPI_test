@@ -1,6 +1,7 @@
 package questionary.module.test.presenter;
 
 import questionary.models.Answer;
+import questionary.models.Question;
 import questionary.models.User;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
@@ -24,22 +25,21 @@ public class TestPresenterImpl implements TestPresenter {
     @Override
     public void onStart(User user) {
         this.user = user;
-        interactor.loadQuestions(user.getSex());
-        int questionsCount = interactor.getQuestionsCount();
+        int questionsCount = interactor.loadQuestions(user.getSex());
         view.displayTestDescription(questionsCount);
         delay(500);
         view.displayConditions();
         delay(500);
         loadNextQuestion();
-        view.observeInput();
     }
 
     @Override
-    public void onInputEntered(String input) {
+    public void onAnswerEntered(String input) {
         switch (input) {
             case "0":
             case "1":
-                interactor.onQuestionAnswered(Answer.fromInput(input));
+                Answer answer = Answer.fromInput(input);
+                user.addAnswer(answer);
                 loadNextQuestion();
                 break;
             case "pause":
@@ -56,19 +56,15 @@ public class TestPresenterImpl implements TestPresenter {
     }
 
     private void loadNextQuestion() {
-        String question = interactor.loadNextQuestion();
-        if (question == null) {
-            close();
-        } else {
-            view.displayQuestion(question);
-        }
+        int nextQuestionIndex = user.getAnswersCount();
+        Question nextQuestion = interactor.getQuestionByIndex(nextQuestionIndex);
+        view.displayQuestion(nextQuestion.getValue());
     }
 
     private void close() {
-        int questionsCount = interactor.getQuestionsCount();
-        List<Answer> answers = interactor.getAllAnswers();
-        String answersString = answers == null ? "[]" : answers.toString();
-        view.displayAnswers(questionsCount, answersString);
+//        List<Answer> answers = interactor.getAllAnswers();
+//        String answersString = answers == null ? "[]" : answers.toString();
+        //view.displayAnswers(questionsCount, answersString);
         view.close();
     }
 

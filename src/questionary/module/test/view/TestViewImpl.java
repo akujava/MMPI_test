@@ -2,7 +2,6 @@ package questionary.module.test.view;
 
 import questionary.models.User;
 import questionary.utils.ColorsForConsole;
-import questionary.models.Sex;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.domain.TestInteractorImpl;
 import questionary.module.test.presenter.TestPresenter;
@@ -40,11 +39,22 @@ public class TestViewImpl implements TestView {
         System.out.println("если вы " + ColorsForConsole.ANSI_RED + "не согласны " + ColorsForConsole.ANSI_RESET + "с утверждением, введите " + ColorsForConsole.ANSI_RED + "ноль (0)." + ColorsForConsole.ANSI_RESET);
         System.out.println("Введите \"exit\", если хотите выйти без сохранения.");
         System.out.println("Введите " + ColorsForConsole.ANSI_YELLOW_BACKGROUND + "\"pause\"" + ColorsForConsole.ANSI_RESET + ", если хотите сохранить промежуточный результат с возможностью продолжить тестирование позже (будет создан файл).");
+    }
+
+    private String readLine() {
+        try {
+            return reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
+    }
 
     @Override
     public void displayQuestion(String question) {
         System.out.println(question);
+        String answer = readLine();
+        presenter.onAnswerEntered(answer);
     }
 
     @Override
@@ -62,7 +72,7 @@ public class TestViewImpl implements TestView {
         while (isWorked) {
             try {
                 String input = reader.readLine();
-                presenter.onInputEntered(input);
+                presenter.onAnswerEntered(input);
             } catch (IOException e) {
                 e.printStackTrace();
             }

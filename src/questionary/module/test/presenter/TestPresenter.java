@@ -6,5 +6,5 @@ public interface TestPresenter {
 
     void onStart(User user);
 
-    void onInputEntered(String input);
+    void onAnswerEntered(String input);
 }

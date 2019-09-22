@@ -27,7 +27,7 @@ public class User {
         return this.getAnswers().isEmpty();
     }
 
-    public int getNextAnswerIndex() {
+    public int getAnswersCount() {
         return this.getAnswers().size();
     }
 
@@ -43,10 +43,8 @@ public class User {
         return answers;
     }
 
-    public void addAnswer(String ans) {
-        answers.add(fromInput(ans));
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
     }
 
 }
-
-//addAnswer

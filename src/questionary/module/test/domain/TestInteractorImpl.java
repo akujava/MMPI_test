@@ -21,40 +21,23 @@ public class TestInteractorImpl implements TestInteractor {
     }
 
     @Override
-    public void loadQuestions(Sex sex) {
+    public int loadQuestions(Sex sex) {
         List<String> stringQuestions = fileHelper.makeList(sex.getPath());
         questions.clear();
         for (String string : stringQuestions) {
             Question question = new Question(string);
             questions.add(question);
         }
+
+        return questions.size();
     }
 
-//    @Override
-//    public String loadNextQuestion(int index) {
-//        if (questions == null) throw new IllegalStateException("Сначала загрузите вопросы");
-//        if (index >= questions.size()) return null;
-//        return questions.get(index);
-//    }
-//
-//    @Override
-//    @Deprecated
-//    public void onQuestionAnswered(Answer answer) {
-//        if (answers == null) throw new IllegalStateException("Сначала загрузите вопросы");
-//        answers.add(answer);
-//        currentIndex++;
-//    }
-//
-//    @Override
-//    @Deprecated
-//    public List<Answer> getAllAnswers() {
-//        return answers;
-//    }
-
     @Override
-    public int getQuestionsCount() {
-        if (questions == null) return 0;
-        return questions.size();
+    public Question getQuestionByIndex(int index) {
+        if (index < 0 || index >= questions.size()) {
+            return null;
+        }
+        return questions.get(index);
     }
 
     @Override
@@ -76,20 +59,5 @@ public class TestInteractorImpl implements TestInteractor {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-    }
-
-    @Override
-    public String loadNextQuestion() {
-        return null;
-    }
-
-    @Override
-    public void onQuestionAnswered(Answer answer) {
-
-    }
-
-    @Override
-    public List<Answer> getAllAnswers() {
-        return null;
     }
 }
