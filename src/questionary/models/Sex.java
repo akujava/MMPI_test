@@ -24,6 +24,14 @@ public enum  Sex {
         }
     }
 
+    public static Sex fromSavedFile(String input) {
+        switch (input) {
+            case "man": return Sex.MAN;
+            case "woman": return Sex.WOMAN;
+            default: return null;
+        }
+    }
+
     @Override
     public String toString() {
         if (this == Sex.MAN) {

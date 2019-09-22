@@ -1,10 +1,10 @@
 package questionary.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Answer {
     private boolean value;
-    private List<Answer> answers;
 
     public Answer(boolean value) {
         this.value = value;

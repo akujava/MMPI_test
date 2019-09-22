@@ -3,6 +3,8 @@ package questionary.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import static questionary.models.Answer.fromInput;
+
 public class User {
 
     private String name;
@@ -40,6 +42,11 @@ public class User {
     public List<Answer> getAnswers() {
         return answers;
     }
+
+    public void addAnswer(String ans) {
+        answers.add(fromInput(ans));
+    }
+
 }
 
 //addAnswer

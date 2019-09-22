@@ -39,8 +39,7 @@ public class TestViewImpl implements TestView {
         System.out.println("если вы " + ColorsForConsole.ANSI_RED + "не согласны " + ColorsForConsole.ANSI_RESET + "с утверждением, введите " + ColorsForConsole.ANSI_RED + "ноль (0)." + ColorsForConsole.ANSI_RESET);
         System.out.println("Введите \"exit\", если хотите выйти без сохранения.");
         System.out.println("Введите " + ColorsForConsole.ANSI_YELLOW_BACKGROUND + "\"pause\"" + ColorsForConsole.ANSI_RESET + ", если хотите сохранить промежуточный результат с возможностью продолжить тестирование позже (будет создан файл).");
-        //System.out.println("Введите " + ColorsForConsole.ANSI_YELLOW_BACKGROUND +  "\"load\"" + ColorsForConsole.ANSI_RESET + ", если хотите загрузить из файла свои ответы (нужно указать имя файла).");
-    }
+        }
 
     @Override
     public void displayQuestion(String question) {

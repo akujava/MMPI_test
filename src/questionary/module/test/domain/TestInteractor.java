@@ -1,13 +1,14 @@
 package questionary.module.test.domain;
 
 import questionary.models.Answer;
+import questionary.models.Sex;
 import questionary.models.User;
 
 import java.util.List;
 
 public interface TestInteractor {
 
-    void loadQuestions(User user);
+    void loadQuestions(Sex sex);
 
     String loadNextQuestion();
 

@@ -1,9 +1,11 @@
 package questionary.module.test.domain;
 
 import questionary.models.Answer;
+import questionary.models.Question;
 import questionary.models.Sex;
 import questionary.models.User;
 import questionary.utils.Constants;
+import questionary.utils.FileHelper;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,24 +13,20 @@ import java.util.List;
 
 public class TestInteractorImpl implements TestInteractor {
 
-    @Override
-    public void loadQuestions(User user) {
-        File file = new File(user.getSex().getPath());
-        questions = new ArrayList<>(600);
-        answers = new ArrayList<>(600);
-        if (!user.isNewUser()) {
-            currentIndex = user.getNextAnswerIndex();
-            answers = user.getAnswers();
-        }
+    private final List<Question> questions = new ArrayList<>(600);
+    private FileHelper fileHelper;
 
-        // todo use FileHelper
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String fileLine;
-            while ((fileLine = reader.readLine()) != null) {
-                questions.add(fileLine);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public TestInteractorImpl(FileHelper fileHelper) {
+        this.fileHelper = fileHelper;
+    }
+
+    @Override
+    public void loadQuestions(Sex sex) {
+        List<String> stringQuestions = fileHelper.makeList(sex.getPath());
+        questions.clear();
+        for (String string : stringQuestions) {
+            Question question = new Question(string);
+            questions.add(question);
         }
     }
 
@@ -65,7 +63,7 @@ public class TestInteractorImpl implements TestInteractor {
             String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(path)); // todo try with resources, перенести в fileHelper
 
-            String userSex = user.getSex() == Sex.MAN ? "man" : "woman";
+            String userSex = user.getSex() == Sex.MAN ? "man" : "woman"; // todo засунуть в Sex.toString()
             writer.write(userSex);
 
             for (Answer answer : answers) {
