@@ -30,26 +30,26 @@ public class TestInteractorImpl implements TestInteractor {
         }
     }
 
-    @Override
-    public String loadNextQuestion(int index) {
-        if (questions == null) throw new IllegalStateException("Сначала загрузите вопросы");
-        if (index >= questions.size()) return null;
-        return questions.get(index);
-    }
-
-    @Override
-    @Deprecated
-    public void onQuestionAnswered(Answer answer) {
-        if (answers == null) throw new IllegalStateException("Сначала загрузите вопросы");
-        answers.add(answer);
-        currentIndex++;
-    }
-
-    @Override
-    @Deprecated
-    public List<Answer> getAllAnswers() {
-        return answers;
-    }
+//    @Override
+//    public String loadNextQuestion(int index) {
+//        if (questions == null) throw new IllegalStateException("Сначала загрузите вопросы");
+//        if (index >= questions.size()) return null;
+//        return questions.get(index);
+//    }
+//
+//    @Override
+//    @Deprecated
+//    public void onQuestionAnswered(Answer answer) {
+//        if (answers == null) throw new IllegalStateException("Сначала загрузите вопросы");
+//        answers.add(answer);
+//        currentIndex++;
+//    }
+//
+//    @Override
+//    @Deprecated
+//    public List<Answer> getAllAnswers() {
+//        return answers;
+//    }
 
     @Override
     public int getQuestionsCount() {
@@ -59,22 +59,37 @@ public class TestInteractorImpl implements TestInteractor {
 
     @Override
     public void saveTempAnswers(User user) {
-        try {
-            String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path)); // todo try with resources, перенести в fileHelper
+//        try {
+//            String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(path)); // todo try with resources, перенести в fileHelper
+//
+//            String userSex = user.getSex() == Sex.MAN ? "man" : "woman"; // todo засунуть в Sex.toString()
+//            writer.write(userSex);
+//
+//            for (Answer answer : answers) {
+//                writer.write("\n");
+//                writer.write(answer.toString());
+//            }
+//
+//            writer.flush();
+//            writer.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
 
-            String userSex = user.getSex() == Sex.MAN ? "man" : "woman"; // todo засунуть в Sex.toString()
-            writer.write(userSex);
+    @Override
+    public String loadNextQuestion() {
+        return null;
+    }
 
-            for (Answer answer : answers) {
-                writer.write("\n");
-                writer.write(answer.toString());
-            }
+    @Override
+    public void onQuestionAnswered(Answer answer) {
 
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    }
+
+    @Override
+    public List<Answer> getAllAnswers() {
+        return null;
     }
 }

@@ -24,7 +24,7 @@ public class TestPresenterImpl implements TestPresenter {
     @Override
     public void onStart(User user) {
         this.user = user;
-        interactor.loadQuestions(user);
+        interactor.loadQuestions(user.getSex());
         int questionsCount = interactor.getQuestionsCount();
         view.displayTestDescription(questionsCount);
         delay(500);

@@ -9,6 +9,7 @@ import questionary.module.test.presenter.TestPresenter;
 import questionary.module.test.presenter.TestPresenterImpl;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.router.TestRouterImpl;
+import questionary.utils.FileHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class TestViewImpl implements TestView {
 
     public void start(User user) {
         reader = new BufferedReader(new InputStreamReader(System.in));
-        TestInteractor interactor = new TestInteractorImpl();
+        TestInteractor interactor = new TestInteractorImpl(FileHelper.getInstance());
         TestRouter router = new TestRouterImpl();
         presenter = new TestPresenterImpl(this, router, interactor);
         presenter.onStart(user);
