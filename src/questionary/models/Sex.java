@@ -35,9 +35,9 @@ public enum  Sex {
     @Override
     public String toString() {
         if (this == Sex.MAN) {
-            return "1";
+            return "man";
         } else {
-            return "0";
+            return "woman";
         }
     }
 }

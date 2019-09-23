@@ -51,6 +51,7 @@ public class TestPresenterImpl implements TestPresenter {
                 break;
             default:
                 view.displayError();
+                loadNextQuestion();//**************************
                 break;
         }
     }

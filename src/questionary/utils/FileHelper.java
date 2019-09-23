@@ -1,9 +1,10 @@
 package questionary.utils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import questionary.models.Answer;
+import questionary.models.Sex;
+import questionary.models.User;
+
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +36,20 @@ public class FileHelper {
             e.printStackTrace();
         }
         return newList;
+    }
+
+    public void makeTxtFile(User user) {
+        String path = Constants.SAVED_USER_ROOT + user.getName() + ".txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+            String userSex = user.getSex().toString();
+            writer.write(userSex);
+
+            for (Answer answer : user.getAnswers()) {
+                writer.write("\n");
+                writer.write(answer.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); //??????????
+        }
     }
 }
