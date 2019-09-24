@@ -1,8 +1,5 @@
 package questionary.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Answer {
     private boolean value;
 
@@ -16,9 +13,12 @@ public class Answer {
 
     public static Answer fromInput(String input) {
         switch (input) {
-            case "1": return new Answer(true);
-            case "0": return new Answer(false);
-            default: return null;
+            case "1":
+                return new Answer(true);
+            case "0":
+                return new Answer(false);
+            default:
+                return null;
         }
     }
 

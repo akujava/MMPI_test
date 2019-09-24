@@ -7,8 +7,6 @@ import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.view.TestView;
 
-import java.util.List;
-
 public class TestPresenterImpl implements TestPresenter {
 
     private TestView view;

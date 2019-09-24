@@ -1,7 +1,6 @@
 package questionary.utils;
 
 import questionary.models.Answer;
-import questionary.models.Sex;
 import questionary.models.User;
 
 import java.io.*;

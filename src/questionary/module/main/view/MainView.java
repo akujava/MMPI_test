@@ -4,9 +4,6 @@ public interface MainView {
 
     void displayTitle();
 
-    /**
-     * ввод имени, для последующего использования при создании временного файла с ответами
-     */
     void displayUserNameInput();
 
     void printError();

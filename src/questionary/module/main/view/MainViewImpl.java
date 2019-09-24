@@ -6,6 +6,7 @@ import questionary.module.main.presenter.MainPresenter;
 import questionary.module.main.presenter.MainPresenterImpl;
 import questionary.module.main.router.MainRouter;
 import questionary.module.main.router.MainRouterImpl;
+import questionary.utils.ColorsForConsole;
 import questionary.utils.FileHelper;
 
 import java.io.BufferedReader;
@@ -59,7 +60,7 @@ public class MainViewImpl implements MainView {
     @Override
     public void displayContinueChoice() {
         System.out.println("Введите единицу (1) для загрузки теста или ноль (0), чтобы начать тест заново.");
-        System.out.println("При вводе нуля (0) будет утерян ранее сохраненный профиль.");
+        System.out.println(ColorsForConsole.ANSI_RED + "При вводе нуля (0) будет утерян ранее сохраненный профиль." + ColorsForConsole.ANSI_RESET);
         String response = readLine();
         presenter.onContinueResponseEntered(response);
     }

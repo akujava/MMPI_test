@@ -3,8 +3,6 @@ package questionary.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import static questionary.models.Answer.fromInput;
-
 public class User {
 
     private String name;

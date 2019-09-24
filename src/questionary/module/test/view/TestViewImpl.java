@@ -1,13 +1,13 @@
 package questionary.module.test.view;
 
 import questionary.models.User;
-import questionary.utils.ColorsForConsole;
 import questionary.module.test.domain.TestInteractor;
 import questionary.module.test.domain.TestInteractorImpl;
 import questionary.module.test.presenter.TestPresenter;
 import questionary.module.test.presenter.TestPresenterImpl;
 import questionary.module.test.router.TestRouter;
 import questionary.module.test.router.TestRouterImpl;
+import questionary.utils.ColorsForConsole;
 import questionary.utils.FileHelper;
 
 import java.io.BufferedReader;
